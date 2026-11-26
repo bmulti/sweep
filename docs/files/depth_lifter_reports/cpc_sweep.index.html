@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>cpc_sweep.index.html</title>
+<style id="cpc-code-css">
+:root{--code-font:'JetBrains Mono','Cascadia Code','Fira Code',Consolas,Menlo,monospace;--code-size:13px;--code-lh:1.55;--tab:4;--maxw:1300px}
+html[data-mode="projector"]{--code-size:22px;--code-lh:1.6;--maxw:none}
+html[data-theme="light"]{--page:#ffffff;--text:#1f2328;--panel:#f6f8fa;--border:#d0d7de;--muted:#59636e;--link:#0969da;--accent:#0969da;--on-accent:#ffffff;--shadow:0 1px 2px rgba(31,35,40,.06),0 4px 14px rgba(31,35,40,.06);--keyword:#cf222e;--builtin:#0550ae;--string:#0a3069;--comment:#6a737d;--number:#0550ae;--operator:#24292f;--definition:#8250df;--decorator:#953800}
+html[data-theme="dark"]{--page:#0d1117;--text:#e6edf3;--panel:#161b22;--border:#30363d;--muted:#8b949e;--link:#58a6ff;--accent:#1f6feb;--on-accent:#ffffff;--shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.35);--keyword:#ff7b72;--builtin:#79c0ff;--string:#a5d6ff;--comment:#8b949e;--number:#79c0ff;--operator:#e6edf3;--definition:#d2a8ff;--decorator:#ffa657}
+
+
+/* cpc_code_html_template.css
+   Page and code-card styles for the published source pages.
+
+   OPTIONAL: if this file is missing it is re-created from the copy built into
+   cpc_treeviews.py; if it is present, it is used exactly as written.
+
+   It is placed AFTER the generated theme/root variables (--page, --text,
+   --code-size ...), so a rule or variable here overrides them, e.g.
+       :root { --code-size: 15px; }
+       html[data-theme='dark'] { --accent: #f78166; }
+*/
+html {
+  color-scheme: light;
+}
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+html[data-mode='projector'][data-theme='light'] {
+  --page: #ffffff;
+  --text: #000000;
+  --muted: #2f3640;
+  --border: #9aa4b2;
+}
+html[data-mode='projector'][data-theme='dark'] {
+  --page: #000000;
+  --text: #ffffff;
+  --panel: #0b0f14;
+  --muted: #c9d1d9;
+  --border: #586374;
+}
+body {
+  background: var(--page);
+  color: var(--text);
+  font:
+    15px/1.6 system-ui,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  margin: 0;
+  padding: 0 26px 48px;
+  -webkit-font-smoothing: antialiased;
+}
+html[data-mode='projector'] body {
+  font-size: 20px;
+}
+#cpc-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: 0 -26px;
+  padding: 9px 26px;
+  background: var(--page);
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.cpc-bar-in {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+.cpc-logo {
+  height: 26px;
+  width: auto;
+  border-radius: 5px;
+  display: block;
+}
+.cpc-home {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 4px 2px;
+}
+.cpc-home:hover {
+  color: var(--link);
+}
+.cpc-grow {
+  flex: 1;
+}
+.cpc-btn {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 11px;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.3;
+  cursor: pointer;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+}
+.cpc-btn:hover {
+  border-color: var(--accent);
+}
+.cpc-btn[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+.cpc-btn:focus-visible,
+.cpc-copy:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.cpc-seg {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cpc-seg .cpc-btn {
+  border: 0;
+  border-radius: 0;
+  border-left: 1px solid var(--border);
+}
+.cpc-seg .cpc-btn:first-child {
+  border-left: 0;
+}
+main {
+  max-width: var(--maxw);
+  margin: 22px auto;
+}
+h1 {
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  margin: 12px 0 6px;
+}
+h2 {
+  font-size: 1.1rem;
+  margin: 22px 0 8px;
+}
+a {
+  color: var(--link);
+}
+.meta {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.report {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+  font-family: var(--code-font);
+  font-size: calc(var(--code-size) + var(--code-delta, 0px));
+  line-height: var(--code-lh);
+  tab-size: var(--tab);
+}
+.cpc-card {
+  margin: 14px 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.cpc-card[hidden] {
+  display: none;
+}
+.cpc-card.code {
+  margin-left: 36px;
+}
+.cpc-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px 5px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font:
+    600 11px/1.2 system-ui,
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cpc-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cpc-copy:hover {
+  color: var(--text);
+  border-color: var(--border);
+  background: var(--page);
+}
+.cpc-copy.done {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.cpc-card pre.source {
+  margin: 0;
+  padding: 10px 0;
+  overflow: auto;
+  background: transparent;
+  border: 0;
+  font-family: var(--code-font);
+  font-size: calc(var(--code-size) + var(--code-delta, 0px));
+  line-height: var(--code-lh);
+  tab-size: var(--tab);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.cpc-card code {
+  font: inherit;
+}
+.source-line {
+  display: block;
+  white-space: pre;
+  padding: 0 16px 0 0;
+  border-left: 3px solid transparent;
+  scroll-margin-top: 96px;
+}
+.source-line:target {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border-left-color: var(--accent);
+}
+.line-number {
+  display: inline-block;
+  box-sizing: content-box;
+  width: var(--gut, 3ch);
+  padding: 0 10px 0 12px;
+  margin-right: 14px;
+  text-align: right;
+  border-right: 1px solid var(--border);
+  color: var(--muted);
+  user-select: none;
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
+a.line-number:hover {
+  color: var(--link);
+}
+html[data-lines='off'] .line-number {
+  display: none;
+}
+html[data-lines='off'] .source-line {
+  padding-left: 16px;
+}
+html[data-wrap='on'] .source-line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.tok-keyword {
+  color: var(--keyword);
+  font-weight: 600;
+}
+.tok-builtin {
+  color: var(--builtin);
+}
+.tok-string {
+  color: var(--string);
+}
+.tok-comment {
+  color: var(--comment);
+  font-style: italic;
+}
+.tok-number {
+  color: var(--number);
+}
+.tok-operator {
+  color: var(--operator);
+}
+.tok-definition {
+  color: var(--definition);
+  font-weight: 600;
+}
+.tok-decorator {
+  color: var(--decorator);
+}
+.index-list {
+  columns: 2;
+  column-width: 270px;
+  padding-left: 22px;
+}
+.index-list li {
+  break-inside: avoid;
+  margin: 2px 0;
+}
+.index-list a {
+  overflow-wrap: anywhere;
+}
+.index-list small {
+  color: var(--muted);
+}
+html[data-mode='projector'] nav[aria-label='Definitions'] {
+  display: none;
+}
+#cpc-filter {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+  margin: 10px 0 4px;
+  padding: 8px 12px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+}
+#cpc-filter:focus {
+  outline: 2px solid var(--accent);
+  border-color: var(--accent);
+}
+#nav,
+#bottom-nav {
+  display: none;
+}
+@media (max-width: 650px) {
+  :root {
+    --code-size: 12px;
+  }
+  body {
+    padding: 0 10px 32px;
+  }
+  #cpc-bar {
+    margin: 0 -10px;
+    padding: 8px 10px;
+  }
+  .index-list {
+    columns: 1;
+  }
+  .cpc-card.code {
+    margin-left: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media print {
+  #cpc-bar {
+    display: none;
+  }
+  body {
+    padding: 0;
+  }
+  .cpc-card {
+    box-shadow: none;
+  }
+  .cpc-copy {
+    display: none;
+  }
+}
+
+</style>
+<script id="cpc-code-js">
+
+/* cpc_code_html_template.js
+   Control bar (theme / projector / size / lines / wrap / reset), copy buttons
+   and keyboard shortcuts (t, p, /) for the published source pages.
+
+   OPTIONAL: if this file is missing it is re-created from the copy built into
+   cpc_treeviews.py; if it is present, it is used exactly as written.
+
+   Keep the config placeholder on the first 'var C =' line: it is replaced with
+   the page's config (theme, mode, logo, index_href ...) when the page is built.
+*/
+(function () {
+  var C = {"theme": "light", "mode": "normal", "line_numbers": true, "wrap": false, "logo": "logo.png", "host_address": "", "index_href": "index.html", "storage_key": "cpc_code_view"},
+    KEY = C.storage_key,
+    root = document.documentElement;
+  var S = { theme: C.theme, mode: C.mode, delta: 0, lines: C.line_numbers, wrap: C.wrap };
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var o = JSON.parse(raw);
+        for (var k in S) {
+          if (o && o[k] !== undefined) S[k] = o[k];
+        }
+      } else {
+        var old = localStorage.getItem('depth_lifter_html_theme');
+        if (old === 'light' || old === 'dark') S.theme = old;
+      }
+    } catch (e) {}
+  }
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(S));
+    } catch (e) {}
+  }
+  function apply() {
+    root.dataset.theme = S.theme === 'dark' ? 'dark' : 'light';
+    root.dataset.mode = S.mode === 'projector' ? 'projector' : 'normal';
+    root.dataset.lines = S.lines ? 'on' : 'off';
+    root.dataset.wrap = S.wrap ? 'on' : 'off';
+    root.style.setProperty('--code-delta', S.delta + 'px');
+    var P = {
+      'theme:light': S.theme !== 'dark',
+      'theme:dark': S.theme === 'dark',
+      projector: S.mode === 'projector',
+      lines: !!S.lines,
+      wrap: !!S.wrap,
+    };
+    var bs = document.querySelectorAll('[data-cpc]');
+    for (var i = 0; i < bs.length; i++) {
+      var k = bs[i].dataset.cpc;
+      if (k in P) bs[i].setAttribute('aria-pressed', String(P[k]));
+    }
+  }
+  function act(n) {
+    if (n === 'theme:light' || n === 'theme:dark') S.theme = n.slice(6);
+    else if (n === 'projector') S.mode = S.mode === 'projector' ? 'normal' : 'projector';
+    else if (n === 'lines') S.lines = !S.lines;
+    else if (n === 'wrap') S.wrap = !S.wrap;
+    else if (n === 'bigger') S.delta = Math.min(S.delta + 1, 20);
+    else if (n === 'smaller') S.delta = Math.max(S.delta - 1, -4);
+    else if (n === 'reset') {
+      S.theme = C.theme;
+      S.mode = C.mode;
+      S.delta = 0;
+      S.lines = C.line_numbers;
+      S.wrap = C.wrap;
+      try {
+        localStorage.removeItem(KEY);
+      } catch (e) {}
+      apply();
+      return;
+    }
+    apply();
+    save();
+  }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function btn(label, name, title, parent) {
+    var b = el('button', 'cpc-btn', label);
+    b.type = 'button';
+    b.dataset.cpc = name;
+    b.title = title || label;
+    b.addEventListener('click', function () {
+      act(name);
+    });
+    parent.appendChild(b);
+    return b;
+  }
+  function url(p) {
+    return C.host_address ? C.host_address.replace(/\/+$/, '') + '/' + p.replace(/^\/+/, '') : p;
+  }
+  function build() {
+    var bar = document.getElementById('cpc-bar');
+    if (!bar) return;
+    bar.textContent = '';
+    var row = el('div', 'cpc-bar-in');
+    if (C.logo) {
+      var img = el('img', 'cpc-logo');
+      img.alt = '';
+      img.src = url(C.logo);
+      img.addEventListener('error', function () {
+        img.remove();
+      });
+      if (C.index_href) {
+        var la = el('a');
+        la.href = url(C.index_href);
+        la.appendChild(img);
+        row.appendChild(la);
+      } else row.appendChild(img);
+    }
+    if (C.index_href) {
+      var h = el('a', 'cpc-home', '\u2190 Index');
+      h.href = url(C.index_href);
+      row.appendChild(h);
+    }
+    row.appendChild(el('span', 'cpc-grow'));
+    var seg = el('span', 'cpc-seg');
+    btn('Light', 'theme:light', 'Light theme (t)', seg);
+    btn('Dark', 'theme:dark', 'Dark theme (t)', seg);
+    row.appendChild(seg);
+    btn('Projector', 'projector', 'Projector mode (p)', row);
+    var sz = el('span', 'cpc-seg');
+    btn('A\u2212', 'smaller', 'Smaller code', sz);
+    btn('A+', 'bigger', 'Larger code', sz);
+    row.appendChild(sz);
+    if (document.querySelector('.source-line')) {
+      btn('# Lines', 'lines', 'Line numbers', row);
+      btn('Wrap', 'wrap', 'Wrap long lines', row);
+    }
+    btn('Reset', 'reset', 'Back to the page defaults', row);
+    bar.appendChild(row);
+    apply();
+  }
+  function cardText(card) {
+    var pre = card.querySelector('pre');
+    if (!pre) return card.textContent;
+    var rows = pre.querySelectorAll('.source-line');
+    if (!rows.length) return pre.textContent;
+    return Array.prototype.map
+      .call(rows, function (r) {
+        var c = r.cloneNode(true),
+          n = c.querySelector('.line-number');
+        if (n) n.remove();
+        return c.textContent;
+      })
+      .join('\n');
+  }
+  function fallback(t, ok) {
+    var a = document.createElement('textarea');
+    a.value = t;
+    a.style.position = 'fixed';
+    a.style.opacity = '0';
+    document.body.appendChild(a);
+    a.select();
+    try {
+      if (document.execCommand('copy')) ok();
+    } catch (e) {}
+    document.body.removeChild(a);
+  }
+  function copyText(t, b) {
+    function ok() {
+      b.classList.add('done');
+      b.title = 'Copied';
+      setTimeout(function () {
+        b.classList.remove('done');
+        b.title = 'Copy code';
+      }, 1200);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText)
+      navigator.clipboard.writeText(t).then(ok, function () {
+        fallback(t, ok);
+      });
+    else fallback(t, ok);
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.cpc-copy');
+    if (!b) return;
+    var card = b.closest('.cpc-card');
+    if (card) copyText(cardText(card), b);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (e.key === 't') act(S.theme === 'dark' ? 'theme:light' : 'theme:dark');
+    else if (e.key === 'p') act('projector');
+    else if (e.key === '/') {
+      var f = document.getElementById('cpc-filter');
+      if (f) {
+        e.preventDefault();
+        f.focus();
+      }
+    }
+  });
+  window.chooseTheme = function (t) {
+    act('theme:' + (t === 'dark' ? 'dark' : 'light'));
+  };
+  load();
+  apply();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
+  else build();
+})();
+
+</script>
+<style id="page-css"></style></head><body><header id="cpc-bar"></header><div id="nav" hidden></div><main><h1>cpc_sweep.index.html</h1><pre class="report">source_file = cpc_sweep.py
+source_modified = 2026-11-22 16:41:16
+name(parameters) -&gt; return  [decorators]    first line   (classes: first-last)
+
+apply_app_icon(*_args, **_kwargs)    150
+apply_theme(*_args, **_kwargs)    153
+attach(parent, context=None)    1623
+density_names()    156
+main()    1628
+normalize_density_name(value)    159
+normalize_theme_name(value)    162
+script_dir()    258
+theme_names()    165
+class CCSweep(TreeviewMixin, ttk.Frame)    265-1620
+    __init__(self, master, embedded=False, host_context=None)    266
+    _apply_ui_choices(self)    1548
+    _apply_worker_result(self, generation, kind, *payload)    1156
+    _attach_notes(self)    423
+    _browse_directory(self)    1488
+    _browse_gateway(self)    1501
+    _build_about_tab(self)    836
+    _build_checksum_tab(self)    630
+    _build_config_tab(self)    763
+    _build_edge_tab(self)    678
+    _build_log_tab(self)    801
+    _build_review_tab(self)    470
+    _build_ui(self)    381
+    _build_ui_choices_tab(self)    810
+    _build_user_gateway_tab(self)    740
+    _checksum_worker(self, generation, cancel_event, directory, mask, recursive, exclude_directories)    1039
+    _current_tab(self)    1574
+    _directory_controls(self, parent, mask_var, scan_command, scan_text, status_var)    446
+    _directory_is_excluded(name, exclude_mask)  [@staticmethod]    876
+    _duplicate_group_count(records, key)  [@staticmethod]    1328
+    _edge_bytes(path, top_count, bottom_count, cancel_event)  [@staticmethod]    1092
+    _edge_worker(self, generation, cancel_event, directory, mask, recursive, exclude_directories, top_lines, bottom_lines)    1105
+    _ensure_worker_poll(self)    985
+    _excluded_from_code_review(path_or_name)  [@staticmethod]    890
+    _file_record(cls, path)  [@classmethod]    894
+    _file_values(record)  [@staticmethod]    1214
+    _format_time(value)  [@staticmethod]    883
+    _gateway_path(self)    371
+    _iter_paths(directory, recursive, exclude_directories, cancel_event, errors)  [@staticmethod]    909
+        walk_error(exc)    911
+    _load_config(self)    339
+    _log(self, text)    1599
+    _mask_parts(mask)  [@staticmethod]    861
+    _matches_mask(cls, name, mask)  [@classmethod]    867
+    _on_close(self)    1618
+    _poll_worker(self)    991
+    _queue_scan_progress(self, generation, kind, count)    981
+    _recycle_selected(self, source)    1380
+    _refresh_review_results(self)    1245
+    _render_checksums(self)    1332
+    _render_edges(self)    1351
+    _render_file_tree(self, tree, records, path_map)    1217
+    _repeat_preview(self)    1276
+    _review_selected(self, _event=None)    1239
+    _review_worker(self, generation, cancel_event, directory, mask, recursive, exclude_directories)    1008
+    _save_config(self)    356
+    _save_config_from_ui(self)    1512
+    _scan_checksums(self)    1034
+    _scan_edges(self)    1071
+    _scan_review(self)    1003
+    _select_saved_tab(self)    1581
+    _send_to_recycle_bin(path)  [@staticmethod]    1454
+        class SHFILEOPSTRUCTW(ctypes.Structure)    1465-1475
+    _set_scan_message(self, kind, message)    972
+    _show_preview(self, path)    1281
+    _source_selected(self, _event=None)    1225
+    _start_worker(self, kind, target, args)    955
+    _tab_changed(self, _event=None)    1590
+    _validated_scan_values(self, mask_var)    937
+    shutdown(self)    1612
+</pre></main><div id="bottom-nav" hidden></div><script></script></body></html>

@@ -1,0 +1,78 @@
+Python Code Depth Lifter 4.7
+Dissect a python file
+project: Python
+
+Folders in use
+    Settings   \\192.168.1.10\shared\cc_lib\_pub\cpc_depth_lifter\cc_depth_lifter.json
+    Reports    X:\cc_lib\_pub\cpc_sweep\depth_lifter_reports
+    Backups    \\192.168.1.10\shared\cc_lib\_pub\cpc_depth_lifter\backups
+    Crash log  \\192.168.1.10\shared\cc_lib\_pub\cpc_depth_lifter\depth_lifter.log
+
+File        cpc_sweep.py
+Modified    2026-11-22 16:41:16
+Encoding    UTF-8
+Line ends   CRLF (Windows)
+
+Cautions
+    Caution 18 of 30 imports do not name the source file at the call: from pathlib import Path, from collections import Counter, from collections import deque, from datetime import datetime, from tkinter import filedialog, from tkinter import messagebox ...
+
+Statistics
+    Lines                         1637   (code 1479, comments 33, blank 125)
+    Classes                       2
+    Functions and methods         68   (module level 9, methods 58, nested 1, async 0)
+    Deepest nesting               2
+    Function length (lines)       average 19.2   median 11.5   shortest 2 (apply_app_icon)   longest 159 (_build_review_tab)
+    Longest functions             _build_review_tab 159, _recycle_selected 72, __init__ 69, _build_edge_tab 61, _apply_worker_result 53
+    Over 50 lines                 5   (_build_review_tab, _recycle_selected, __init__, _build_edge_tab, _apply_worker_result)
+    Parameters per function       average 1.2   most 8 (_edge_worker)
+    With a docstring              2 of 68   (2%)   module docstring: yes
+    With a return type            0 of 68   (0%)
+    Decorated                     11
+    Variables                     module 27, class 1, self attributes 69, in functions 163
+    Call sites                    714   (325 distinct callees)
+
+Imports
+    30 imports: 12 by module or alias, 18 by bare name, 0 star
+    The source file is named at the call for 40% of them
+
+Named by module or alias (good: a call reads os.path.join or np.array, so the source shows)
+    import sys                                     standard library               line 85    used 2x
+    import ctypes                                  standard library               line 99    used 11x
+    import fnmatch                                 standard library               line 100   used 2x
+    import hashlib                                 standard library               line 101   used 4x
+    import json                                    standard library               line 102   used 2x
+    import os                                      standard library               line 103   used 44x
+    import queue                                   standard library               line 104   used 2x
+    import sys                                     standard library               line 105   used 2x
+    import threading                               standard library               line 106   used 2x
+    import tkinter as tk                           standard library               line 107   used 28x
+    import cpc_ui_choices as ui_choices            third party or your own file   line 129   used 2x
+    import cpc_notes                               third party or your own file   line 135   used 2x
+
+Bare names (a call reads Path(...) and does not say it came from pathlib;
+prefer: import pathlib, then pathlib.Path(...), or import pathlib as pl)
+    from pathlib import Path                       standard library               line 84    used 1x
+    from collections import Counter                standard library               line 108   used 3x
+    from collections import deque                  standard library               line 108   used 2x
+    from datetime import datetime                  standard library               line 109   used 1x
+    from tkinter import filedialog                 standard library               line 110   used 2x
+    from tkinter import messagebox                 standard library               line 110   used 9x
+    from tkinter import ttk                        standard library               line 110   used 85x
+    from cpc_treeviews import TreeviewMixin        third party or your own file   line 121   used 1x
+    from cpc_treeviews import build_treeview       third party or your own file   line 121   used 4x
+    from cpc_treeviews import insert_row           third party or your own file   line 121   used 3x
+    from gateway_controller import GatewayController third party or your own file   line 124   used 2x
+    from cpc_ui_theme import apply_app_icon        third party or your own file   line 141   used 1x
+    from cpc_ui_theme import apply_theme           third party or your own file   line 141   used 2x
+    from cpc_ui_theme import density_names         third party or your own file   line 141   used 0x
+    from cpc_ui_theme import normalize_density_name third party or your own file   line 141   used 3x
+    from cpc_ui_theme import normalize_theme_name  third party or your own file   line 141   used 3x
+    from cpc_ui_theme import theme_names           third party or your own file   line 141   used 0x
+    from send2trash import send2trash              third party or your own file   line 1456  used 1x
+
+Star imports (names cannot be traced to a file)
+    none
+
+Imported but never used (may be re-exported)
+    from cpc_ui_theme import density_names    line 141
+    from cpc_ui_theme import theme_names    line 141

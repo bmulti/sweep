@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>cpc_sweep-vars_index.html</title>
+<style id="cpc-code-css">
+:root{--code-font:'JetBrains Mono','Cascadia Code','Fira Code',Consolas,Menlo,monospace;--code-size:13px;--code-lh:1.55;--tab:4;--maxw:1300px}
+html[data-mode="projector"]{--code-size:22px;--code-lh:1.6;--maxw:none}
+html[data-theme="light"]{--page:#ffffff;--text:#1f2328;--panel:#f6f8fa;--border:#d0d7de;--muted:#59636e;--link:#0969da;--accent:#0969da;--on-accent:#ffffff;--shadow:0 1px 2px rgba(31,35,40,.06),0 4px 14px rgba(31,35,40,.06);--keyword:#cf222e;--builtin:#0550ae;--string:#0a3069;--comment:#6a737d;--number:#0550ae;--operator:#24292f;--definition:#8250df;--decorator:#953800}
+html[data-theme="dark"]{--page:#0d1117;--text:#e6edf3;--panel:#161b22;--border:#30363d;--muted:#8b949e;--link:#58a6ff;--accent:#1f6feb;--on-accent:#ffffff;--shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.35);--keyword:#ff7b72;--builtin:#79c0ff;--string:#a5d6ff;--comment:#8b949e;--number:#79c0ff;--operator:#e6edf3;--definition:#d2a8ff;--decorator:#ffa657}
+
+
+/* cpc_code_html_template.css
+   Page and code-card styles for the published source pages.
+
+   OPTIONAL: if this file is missing it is re-created from the copy built into
+   cpc_treeviews.py; if it is present, it is used exactly as written.
+
+   It is placed AFTER the generated theme/root variables (--page, --text,
+   --code-size ...), so a rule or variable here overrides them, e.g.
+       :root { --code-size: 15px; }
+       html[data-theme='dark'] { --accent: #f78166; }
+*/
+html {
+  color-scheme: light;
+}
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+html[data-mode='projector'][data-theme='light'] {
+  --page: #ffffff;
+  --text: #000000;
+  --muted: #2f3640;
+  --border: #9aa4b2;
+}
+html[data-mode='projector'][data-theme='dark'] {
+  --page: #000000;
+  --text: #ffffff;
+  --panel: #0b0f14;
+  --muted: #c9d1d9;
+  --border: #586374;
+}
+body {
+  background: var(--page);
+  color: var(--text);
+  font:
+    15px/1.6 system-ui,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  margin: 0;
+  padding: 0 26px 48px;
+  -webkit-font-smoothing: antialiased;
+}
+html[data-mode='projector'] body {
+  font-size: 20px;
+}
+#cpc-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: 0 -26px;
+  padding: 9px 26px;
+  background: var(--page);
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.cpc-bar-in {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+.cpc-logo {
+  height: 26px;
+  width: auto;
+  border-radius: 5px;
+  display: block;
+}
+.cpc-home {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 4px 2px;
+}
+.cpc-home:hover {
+  color: var(--link);
+}
+.cpc-grow {
+  flex: 1;
+}
+.cpc-btn {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 11px;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.3;
+  cursor: pointer;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+}
+.cpc-btn:hover {
+  border-color: var(--accent);
+}
+.cpc-btn[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+.cpc-btn:focus-visible,
+.cpc-copy:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.cpc-seg {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cpc-seg .cpc-btn {
+  border: 0;
+  border-radius: 0;
+  border-left: 1px solid var(--border);
+}
+.cpc-seg .cpc-btn:first-child {
+  border-left: 0;
+}
+main {
+  max-width: var(--maxw);
+  margin: 22px auto;
+}
+h1 {
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  margin: 12px 0 6px;
+}
+h2 {
+  font-size: 1.1rem;
+  margin: 22px 0 8px;
+}
+a {
+  color: var(--link);
+}
+.meta {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.report {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+  font-family: var(--code-font);
+  font-size: calc(var(--code-size) + var(--code-delta, 0px));
+  line-height: var(--code-lh);
+  tab-size: var(--tab);
+}
+.cpc-card {
+  margin: 14px 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.cpc-card[hidden] {
+  display: none;
+}
+.cpc-card.code {
+  margin-left: 36px;
+}
+.cpc-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px 5px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font:
+    600 11px/1.2 system-ui,
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cpc-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cpc-copy:hover {
+  color: var(--text);
+  border-color: var(--border);
+  background: var(--page);
+}
+.cpc-copy.done {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.cpc-card pre.source {
+  margin: 0;
+  padding: 10px 0;
+  overflow: auto;
+  background: transparent;
+  border: 0;
+  font-family: var(--code-font);
+  font-size: calc(var(--code-size) + var(--code-delta, 0px));
+  line-height: var(--code-lh);
+  tab-size: var(--tab);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.cpc-card code {
+  font: inherit;
+}
+.source-line {
+  display: block;
+  white-space: pre;
+  padding: 0 16px 0 0;
+  border-left: 3px solid transparent;
+  scroll-margin-top: 96px;
+}
+.source-line:target {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border-left-color: var(--accent);
+}
+.line-number {
+  display: inline-block;
+  box-sizing: content-box;
+  width: var(--gut, 3ch);
+  padding: 0 10px 0 12px;
+  margin-right: 14px;
+  text-align: right;
+  border-right: 1px solid var(--border);
+  color: var(--muted);
+  user-select: none;
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
+a.line-number:hover {
+  color: var(--link);
+}
+html[data-lines='off'] .line-number {
+  display: none;
+}
+html[data-lines='off'] .source-line {
+  padding-left: 16px;
+}
+html[data-wrap='on'] .source-line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.tok-keyword {
+  color: var(--keyword);
+  font-weight: 600;
+}
+.tok-builtin {
+  color: var(--builtin);
+}
+.tok-string {
+  color: var(--string);
+}
+.tok-comment {
+  color: var(--comment);
+  font-style: italic;
+}
+.tok-number {
+  color: var(--number);
+}
+.tok-operator {
+  color: var(--operator);
+}
+.tok-definition {
+  color: var(--definition);
+  font-weight: 600;
+}
+.tok-decorator {
+  color: var(--decorator);
+}
+.index-list {
+  columns: 2;
+  column-width: 270px;
+  padding-left: 22px;
+}
+.index-list li {
+  break-inside: avoid;
+  margin: 2px 0;
+}
+.index-list a {
+  overflow-wrap: anywhere;
+}
+.index-list small {
+  color: var(--muted);
+}
+html[data-mode='projector'] nav[aria-label='Definitions'] {
+  display: none;
+}
+#cpc-filter {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+  margin: 10px 0 4px;
+  padding: 8px 12px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+}
+#cpc-filter:focus {
+  outline: 2px solid var(--accent);
+  border-color: var(--accent);
+}
+#nav,
+#bottom-nav {
+  display: none;
+}
+@media (max-width: 650px) {
+  :root {
+    --code-size: 12px;
+  }
+  body {
+    padding: 0 10px 32px;
+  }
+  #cpc-bar {
+    margin: 0 -10px;
+    padding: 8px 10px;
+  }
+  .index-list {
+    columns: 1;
+  }
+  .cpc-card.code {
+    margin-left: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media print {
+  #cpc-bar {
+    display: none;
+  }
+  body {
+    padding: 0;
+  }
+  .cpc-card {
+    box-shadow: none;
+  }
+  .cpc-copy {
+    display: none;
+  }
+}
+
+</style>
+<script id="cpc-code-js">
+
+/* cpc_code_html_template.js
+   Control bar (theme / projector / size / lines / wrap / reset), copy buttons
+   and keyboard shortcuts (t, p, /) for the published source pages.
+
+   OPTIONAL: if this file is missing it is re-created from the copy built into
+   cpc_treeviews.py; if it is present, it is used exactly as written.
+
+   Keep the config placeholder on the first 'var C =' line: it is replaced with
+   the page's config (theme, mode, logo, index_href ...) when the page is built.
+*/
+(function () {
+  var C = {"theme": "light", "mode": "normal", "line_numbers": true, "wrap": false, "logo": "logo.png", "host_address": "", "index_href": "index.html", "storage_key": "cpc_code_view"},
+    KEY = C.storage_key,
+    root = document.documentElement;
+  var S = { theme: C.theme, mode: C.mode, delta: 0, lines: C.line_numbers, wrap: C.wrap };
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var o = JSON.parse(raw);
+        for (var k in S) {
+          if (o && o[k] !== undefined) S[k] = o[k];
+        }
+      } else {
+        var old = localStorage.getItem('depth_lifter_html_theme');
+        if (old === 'light' || old === 'dark') S.theme = old;
+      }
+    } catch (e) {}
+  }
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(S));
+    } catch (e) {}
+  }
+  function apply() {
+    root.dataset.theme = S.theme === 'dark' ? 'dark' : 'light';
+    root.dataset.mode = S.mode === 'projector' ? 'projector' : 'normal';
+    root.dataset.lines = S.lines ? 'on' : 'off';
+    root.dataset.wrap = S.wrap ? 'on' : 'off';
+    root.style.setProperty('--code-delta', S.delta + 'px');
+    var P = {
+      'theme:light': S.theme !== 'dark',
+      'theme:dark': S.theme === 'dark',
+      projector: S.mode === 'projector',
+      lines: !!S.lines,
+      wrap: !!S.wrap,
+    };
+    var bs = document.querySelectorAll('[data-cpc]');
+    for (var i = 0; i < bs.length; i++) {
+      var k = bs[i].dataset.cpc;
+      if (k in P) bs[i].setAttribute('aria-pressed', String(P[k]));
+    }
+  }
+  function act(n) {
+    if (n === 'theme:light' || n === 'theme:dark') S.theme = n.slice(6);
+    else if (n === 'projector') S.mode = S.mode === 'projector' ? 'normal' : 'projector';
+    else if (n === 'lines') S.lines = !S.lines;
+    else if (n === 'wrap') S.wrap = !S.wrap;
+    else if (n === 'bigger') S.delta = Math.min(S.delta + 1, 20);
+    else if (n === 'smaller') S.delta = Math.max(S.delta - 1, -4);
+    else if (n === 'reset') {
+      S.theme = C.theme;
+      S.mode = C.mode;
+      S.delta = 0;
+      S.lines = C.line_numbers;
+      S.wrap = C.wrap;
+      try {
+        localStorage.removeItem(KEY);
+      } catch (e) {}
+      apply();
+      return;
+    }
+    apply();
+    save();
+  }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function btn(label, name, title, parent) {
+    var b = el('button', 'cpc-btn', label);
+    b.type = 'button';
+    b.dataset.cpc = name;
+    b.title = title || label;
+    b.addEventListener('click', function () {
+      act(name);
+    });
+    parent.appendChild(b);
+    return b;
+  }
+  function url(p) {
+    return C.host_address ? C.host_address.replace(/\/+$/, '') + '/' + p.replace(/^\/+/, '') : p;
+  }
+  function build() {
+    var bar = document.getElementById('cpc-bar');
+    if (!bar) return;
+    bar.textContent = '';
+    var row = el('div', 'cpc-bar-in');
+    if (C.logo) {
+      var img = el('img', 'cpc-logo');
+      img.alt = '';
+      img.src = url(C.logo);
+      img.addEventListener('error', function () {
+        img.remove();
+      });
+      if (C.index_href) {
+        var la = el('a');
+        la.href = url(C.index_href);
+        la.appendChild(img);
+        row.appendChild(la);
+      } else row.appendChild(img);
+    }
+    if (C.index_href) {
+      var h = el('a', 'cpc-home', '\u2190 Index');
+      h.href = url(C.index_href);
+      row.appendChild(h);
+    }
+    row.appendChild(el('span', 'cpc-grow'));
+    var seg = el('span', 'cpc-seg');
+    btn('Light', 'theme:light', 'Light theme (t)', seg);
+    btn('Dark', 'theme:dark', 'Dark theme (t)', seg);
+    row.appendChild(seg);
+    btn('Projector', 'projector', 'Projector mode (p)', row);
+    var sz = el('span', 'cpc-seg');
+    btn('A\u2212', 'smaller', 'Smaller code', sz);
+    btn('A+', 'bigger', 'Larger code', sz);
+    row.appendChild(sz);
+    if (document.querySelector('.source-line')) {
+      btn('# Lines', 'lines', 'Line numbers', row);
+      btn('Wrap', 'wrap', 'Wrap long lines', row);
+    }
+    btn('Reset', 'reset', 'Back to the page defaults', row);
+    bar.appendChild(row);
+    apply();
+  }
+  function cardText(card) {
+    var pre = card.querySelector('pre');
+    if (!pre) return card.textContent;
+    var rows = pre.querySelectorAll('.source-line');
+    if (!rows.length) return pre.textContent;
+    return Array.prototype.map
+      .call(rows, function (r) {
+        var c = r.cloneNode(true),
+          n = c.querySelector('.line-number');
+        if (n) n.remove();
+        return c.textContent;
+      })
+      .join('\n');
+  }
+  function fallback(t, ok) {
+    var a = document.createElement('textarea');
+    a.value = t;
+    a.style.position = 'fixed';
+    a.style.opacity = '0';
+    document.body.appendChild(a);
+    a.select();
+    try {
+      if (document.execCommand('copy')) ok();
+    } catch (e) {}
+    document.body.removeChild(a);
+  }
+  function copyText(t, b) {
+    function ok() {
+      b.classList.add('done');
+      b.title = 'Copied';
+      setTimeout(function () {
+        b.classList.remove('done');
+        b.title = 'Copy code';
+      }, 1200);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText)
+      navigator.clipboard.writeText(t).then(ok, function () {
+        fallback(t, ok);
+      });
+    else fallback(t, ok);
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.cpc-copy');
+    if (!b) return;
+    var card = b.closest('.cpc-card');
+    if (card) copyText(cardText(card), b);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (e.key === 't') act(S.theme === 'dark' ? 'theme:light' : 'theme:dark');
+    else if (e.key === 'p') act('projector');
+    else if (e.key === '/') {
+      var f = document.getElementById('cpc-filter');
+      if (f) {
+        e.preventDefault();
+        f.focus();
+      }
+    }
+  });
+  window.chooseTheme = function (t) {
+    act('theme:' + (t === 'dark' ? 'dark' : 'light'));
+  };
+  load();
+  apply();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
+  else build();
+})();
+
+</script>
+<style id="page-css"></style></head><body><header id="cpc-bar"></header><div id="nav" hidden></div><main><h1>cpc_sweep-vars_index.html</h1><pre class="report">source_file = cpc_sweep.py
+source_modified = 2026-11-22 16:41:16
+name: annotation = value    line numbers   (functions: name() with their variables indented; classes: first-last)
+
+APP_TITLE = &#x27;CC Sweep&#x27;    169
+CODE_REVIEW_EXCLUDED_EXTENSIONS = {&#x27;.png&#x27;, &#x27;.jpg&#x27;, &#x27;.jpeg&#x27;}    177
+cpc_notes = None    137
+DEFAULT_CONFIG = {&#x27;directory&#x27;: DEFAULT_DIRECTORY, &#x27;review_mask&#x27;: D…    180
+DEFAULT_DIRECTORY = &#x27;C:\\shared&#x27;    171
+DEFAULT_EXCLUDED_DIRECTORIES = &#x27;_*;__pycache__;compile*;build*;dist*;.git;.svn;.…    173
+DEFAULT_MASK = &#x27;*.py;*.pyw;*.json;*.txt;*.md&#x27;    172
+DEFAULT_WINDOW = &#x27;1380x900&#x27;    178
+description = &#x27;Find related names, exact duplicates, and matchi…    94
+FILE_ALIGNS = [&#x27;w&#x27;, &#x27;w&#x27;, &#x27;w&#x27;, &#x27;w&#x27;, &#x27;w&#x27;, &#x27;w&#x27;]    220
+FILE_COLUMNS = (&#x27;file_type&#x27;, &#x27;created&#x27;, &#x27;modified&#x27;, &#x27;last_used&#x27;,…    200
+FILE_LABELS = [&#x27;Type&#x27;, &#x27;Created&#x27;, &#x27;Modified&#x27;, &#x27;Last Used&#x27;, &#x27;Fil…    209
+FILE_MINWIDTHS = [55, 115, 115, 115, 140, 260]    219
+FILE_STRETCH = [False, False, False, False, True, True]    221
+FILE_WIDTHS = [80, 145, 145, 145, 240, 580]    218
+GatewayController = None    126
+named = &#x27;Sweep&#x27;    95
+notes_import_error = &#x27;&#x27;    133, 138
+NOTES_KEY = &#x27;cpc_sweep&#x27;    170
+project = &#x27;Python&#x27;    97
+shared_path = Path(__file__).resolve().parent.parent    87
+TV_CHECKSUM = {&#x27;title&#x27;: &#x27;CC Sweep Full File Checksums&#x27;, &#x27;column…    235
+TV_EDGE = {&#x27;title&#x27;: &#x27;CC Sweep Top and Bottom Code Checksums…    245
+TV_FILES = {&#x27;title&#x27;: &#x27;CC Sweep Directory Files&#x27;, &#x27;columns&#x27;: …    223
+TV_REVIEW = dict(TV_FILES, title=&#x27;CC Sweep Same-name Review&#x27;)    233
+ui_choices = None    131
+version = &#x27;21&#x27;    96
+main()
+    root
+class CCSweep    265-1620
+    self._all_records = []    317, 1170, 1425
+    self._checksum_paths = {}    322, 1340
+    self._checksum_records = []    321, 1185, 1417
+    self._edge_paths = {}    324, 1365
+    self._edge_records = []    323, 1198, 1421
+    self._last_review_tree = self.source_tree    581, 1226, 1240
+    self._review_paths = {}    320
+    self._source_paths = {}    319
+    self._source_records = []    318, 1171, 1429
+    self._worker_active = False    328, 962, 1166
+    self._worker_cancel = None    327, 961, 1167
+    self._worker_generation = 0    326
+    self._worker_polling = False    329, 988, 1001
+    self._worker_queue = queue.Queue()    325
+    self.about_tab = ttk.Frame(self.notebook)    392
+    self.base_dir = script_dir()    274
+    self.bottom_lines_var = tk.IntVar(value=int(self.config_data.get(&#x27;bottom_…    685
+    self.checksum_info_var = tk.StringVar(value=&#x27;Press Scan Checksums to begin…    314
+    self.checksum_mask_var = tk.StringVar(value=self.config_data.get(&#x27;checksum…    633
+    self.checksum_tab = ttk.Frame(self.notebook)    386
+    self.checksum_tree = build_treeview(tree_frame, TV_CHECKSUM, owner=sel…    665
+    self.colors = dict(apply_theme(self.window, self.ui_theme_name,…    299, 309, 1570
+    self.config_data = self._load_config()    276
+    self.config_gateway_var = tk.StringVar(value=self.config_data.get(&#x27;gateway_…    767
+    self.config_path = os.path.join(self.base_dir, &#x27;cc_Sweep.json&#x27;)    275
+    self.config_tab = ttk.Frame(self.notebook)    389
+    self.density_var = self.ui_choices_controller.density_var    825
+    self.directory_var = tk.StringVar(value=self.config_data.get(&#x27;director…    474
+    self.duplicates_only_var = tk.BooleanVar(value=False)    636
+    self.edge_basis_var = tk.StringVar(value=&#x27;All&#x27;)    686
+    self.edge_info_var = tk.StringVar(value=&#x27;Press Scan Code Edges to begi…    315
+    self.edge_mask_var = tk.StringVar(value=self.config_data.get(&#x27;edge_mas…    681
+    self.edge_tab = ttk.Frame(self.notebook)    387
+    self.edge_tree = build_treeview(tree_frame, TV_EDGE, owner=self, c…    727
+    self.embedded = bool(embedded or not isinstance(master, (tk.Tk, t…    270
+    self.exclude_directories_var = tk.StringVar(value=self.config_data.get(&#x27;exclude_…    483
+    self.host_context = dict(host_context or {})    273
+    self.ignore_case_var = tk.BooleanVar(value=True)    490
+    self.ignore_extension_var = tk.BooleanVar(value=True)    491
+    self.log_tab = ttk.Frame(self.notebook)    390
+    self.log_text = tk.Text(outer, wrap=&#x27;word&#x27;, state=&#x27;disabled&#x27;)    804
+    self.master = master    268
+    self.notebook = ttk.Notebook(self)    382
+    self.notes_tab = ttk.Frame(self.notebook)    442
+    self.preview_lines_var = tk.IntVar(value=int(self.config_data.get(&#x27;preview…    495
+    self.preview_path_var = tk.StringVar(value=&#x27;No file selected&#x27;)    313
+    self.preview_position_var = tk.StringVar(value=self.config_data.get(&#x27;preview_…    492
+    self.preview_text = tk.Text(preview_holder, wrap=&#x27;none&#x27;, state=&#x27;disab…    615
+    self.recursive_var = tk.BooleanVar(value=bool(self.config_data.get(&#x27;re…    480
+    self.refresh_notes = None    332, 431
+    self.review_info_var = tk.StringVar(value=&#x27;Press Refresh to scan&#x27;)    312
+    self.review_mask_var = tk.StringVar(value=self.config_data.get(&#x27;review_m…    477
+    self.review_tab = ttk.Frame(self.notebook)    385
+    self.review_tree = build_treeview(review_frame, TV_REVIEW, owner=sel…    571
+    self.search_mode_var = tk.StringVar(value=&#x27;Contains&#x27;)    489
+    self.search_var = tk.StringVar(value=&#x27;&#x27;)    488
+    self.source_tree = build_treeview(source_frame, TV_FILES, owner=self…    560
+    self.status_var = tk.StringVar(value=&#x27;No scan has been requested&#x27;)    311
+    self.theme_var = self.ui_choices_controller.theme_var    824
+    self.top_lines_var = tk.IntVar(value=int(self.config_data.get(&#x27;top_lin…    684
+    self.ui_choices_controller = None    331, 813, 830
+    self.ui_choices_tab = ttk.Frame(self.notebook)    391
+    self.ui_density = normalize_density_name(self.config_data.get(&#x27;ui_d…    287, 1562
+    self.ui_theme_name = normalize_theme_name(self.config_data.get(&#x27;ui_the…    284, 1561
+    self.user_gateway = None    330, 749
+    self.user_gateway_tab = ttk.Frame(self.notebook)    388
+    self.window = master.winfo_toplevel()    269
+    self.window_height_var = self.ui_choices_controller.window_height_var    827
+    self.window_width_var = self.ui_choices_controller.window_width_var    826
+    __init__()
+        host_density
+        host_theme
+    _apply_ui_choices()
+        density
+        height
+        theme
+        width
+    _apply_worker_result()
+        all_records
+        bottom_lines
+        count
+        directory
+        errors
+        groups
+        mask
+        records
+        scan_kind
+        source_records
+        top_lines
+    _attach_notes()
+        error
+        tab_id
+    _browse_directory()
+        current
+        selected
+    _browse_gateway()
+        current
+        selected
+    _build_about_tab()
+        details
+        outer
+        text
+    _build_checksum_tab()
+        options
+        outer
+        tree_frame
+    _build_config_tab()
+        label
+        outer
+        row
+        rows
+        variable
+    _build_edge_tab()
+        basis
+        options
+        outer
+        tree_frame
+    _build_log_tab()
+        outer
+        scrollbar
+    _build_review_tab()
+        outer
+        preview_controls
+        preview_frame
+        preview_holder
+        review_frame
+        search_line
+        source_frame
+        vertical
+        xbar
+        ybar
+    _build_ui_choices_tab()
+        outer
+    _checksum_worker()
+        block
+        digest
+        errors
+        handle
+        path
+        record
+        records
+    _current_tab()
+        selected
+    _directory_controls()
+        block
+        entry
+        first
+        second
+    _directory_is_excluded()
+        candidate
+        patterns
+        text
+    _duplicate_group_count()
+        counts
+    _edge_bytes()
+        bottom
+        handle
+        line
+        number
+        top
+    _edge_worker()
+        bottom
+        errors
+        path
+        record
+        records
+        top
+    _file_record()
+        extension
+        name
+        stat
+    _gateway_path()
+        value
+    _iter_paths()
+        directories
+        entries
+        entry
+        folder
+        name
+        names
+    _load_config()
+        data
+        handle
+        loaded
+    _log()
+        value
+    _mask_parts()
+        parts
+        text
+    _matches_mask()
+        lowered
+        pattern
+    _poll_worker()
+        result
+    _recycle_selected()
+        failures
+        path
+        path_map
+        paths
+        recycled
+        removed
+        tree
+    _refresh_review_results()
+        candidate
+        compare_query
+        matched
+        mode
+        query
+        record
+        results
+    _render_checksums()
+        counts
+        iid
+        number
+        record
+        records
+        values
+    _render_edges()
+        basis
+        counts
+        iid
+        key
+        number
+        record
+        records
+        values
+    _render_file_tree()
+        iid
+        number
+        record
+    _repeat_preview()
+        path
+    _review_selected()
+        selected
+    _review_worker()
+        all_records
+        errors
+        path
+        record
+        source_records
+    _save_config()
+        handle
+    _save_config_from_ui()
+        bottom_lines
+        path_type
+        preview_lines
+        top_lines
+    _scan_checksums()
+        values
+    _scan_edges()
+        bottom_lines
+        top_lines
+        values
+    _scan_review()
+        values
+    _select_saved_tab()
+        tab_id
+        wanted
+    _send_to_recycle_bin()
+        operation
+        result
+        class SHFILEOPSTRUCTW    1465-1475
+            _fields_ = [(&#x27;hwnd&#x27;, ctypes.c_void_p), (&#x27;wFunc&#x27;, ctypes.c_ui…    1466
+    _show_preview()
+        _number
+        content
+        handle
+        line
+        line_count
+        lines
+        position
+    _source_selected()
+        name
+        path
+        selected
+    _start_worker()
+        cancel_event
+        generation
+    _validated_scan_values()
+        directory
+</pre></main><div id="bottom-nav" hidden></div><script></script></body></html>

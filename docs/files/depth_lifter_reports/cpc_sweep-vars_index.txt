@@ -1,0 +1,314 @@
+source_file = cpc_sweep.py
+source_modified = 2026-11-22 16:41:16
+name: annotation = value    line numbers   (functions: name() with their variables indented; classes: first-last)
+
+APP_TITLE = 'CC Sweep'    169
+CODE_REVIEW_EXCLUDED_EXTENSIONS = {'.png', '.jpg', '.jpeg'}    177
+cpc_notes = None    137
+DEFAULT_CONFIG = {'directory': DEFAULT_DIRECTORY, 'review_mask': D…    180
+DEFAULT_DIRECTORY = 'C:\\shared'    171
+DEFAULT_EXCLUDED_DIRECTORIES = '_*;__pycache__;compile*;build*;dist*;.git;.svn;.…    173
+DEFAULT_MASK = '*.py;*.pyw;*.json;*.txt;*.md'    172
+DEFAULT_WINDOW = '1380x900'    178
+description = 'Find related names, exact duplicates, and matchi…    94
+FILE_ALIGNS = ['w', 'w', 'w', 'w', 'w', 'w']    220
+FILE_COLUMNS = ('file_type', 'created', 'modified', 'last_used',…    200
+FILE_LABELS = ['Type', 'Created', 'Modified', 'Last Used', 'Fil…    209
+FILE_MINWIDTHS = [55, 115, 115, 115, 140, 260]    219
+FILE_STRETCH = [False, False, False, False, True, True]    221
+FILE_WIDTHS = [80, 145, 145, 145, 240, 580]    218
+GatewayController = None    126
+named = 'Sweep'    95
+notes_import_error = ''    133, 138
+NOTES_KEY = 'cpc_sweep'    170
+project = 'Python'    97
+shared_path = Path(__file__).resolve().parent.parent    87
+TV_CHECKSUM = {'title': 'CC Sweep Full File Checksums', 'column…    235
+TV_EDGE = {'title': 'CC Sweep Top and Bottom Code Checksums…    245
+TV_FILES = {'title': 'CC Sweep Directory Files', 'columns': …    223
+TV_REVIEW = dict(TV_FILES, title='CC Sweep Same-name Review')    233
+ui_choices = None    131
+version = '21'    96
+main()
+    root
+class CCSweep    265-1620
+    self._all_records = []    317, 1170, 1425
+    self._checksum_paths = {}    322, 1340
+    self._checksum_records = []    321, 1185, 1417
+    self._edge_paths = {}    324, 1365
+    self._edge_records = []    323, 1198, 1421
+    self._last_review_tree = self.source_tree    581, 1226, 1240
+    self._review_paths = {}    320
+    self._source_paths = {}    319
+    self._source_records = []    318, 1171, 1429
+    self._worker_active = False    328, 962, 1166
+    self._worker_cancel = None    327, 961, 1167
+    self._worker_generation = 0    326
+    self._worker_polling = False    329, 988, 1001
+    self._worker_queue = queue.Queue()    325
+    self.about_tab = ttk.Frame(self.notebook)    392
+    self.base_dir = script_dir()    274
+    self.bottom_lines_var = tk.IntVar(value=int(self.config_data.get('bottom_…    685
+    self.checksum_info_var = tk.StringVar(value='Press Scan Checksums to begin…    314
+    self.checksum_mask_var = tk.StringVar(value=self.config_data.get('checksum…    633
+    self.checksum_tab = ttk.Frame(self.notebook)    386
+    self.checksum_tree = build_treeview(tree_frame, TV_CHECKSUM, owner=sel…    665
+    self.colors = dict(apply_theme(self.window, self.ui_theme_name,…    299, 309, 1570
+    self.config_data = self._load_config()    276
+    self.config_gateway_var = tk.StringVar(value=self.config_data.get('gateway_…    767
+    self.config_path = os.path.join(self.base_dir, 'cc_Sweep.json')    275
+    self.config_tab = ttk.Frame(self.notebook)    389
+    self.density_var = self.ui_choices_controller.density_var    825
+    self.directory_var = tk.StringVar(value=self.config_data.get('director…    474
+    self.duplicates_only_var = tk.BooleanVar(value=False)    636
+    self.edge_basis_var = tk.StringVar(value='All')    686
+    self.edge_info_var = tk.StringVar(value='Press Scan Code Edges to begi…    315
+    self.edge_mask_var = tk.StringVar(value=self.config_data.get('edge_mas…    681
+    self.edge_tab = ttk.Frame(self.notebook)    387
+    self.edge_tree = build_treeview(tree_frame, TV_EDGE, owner=self, c…    727
+    self.embedded = bool(embedded or not isinstance(master, (tk.Tk, t…    270
+    self.exclude_directories_var = tk.StringVar(value=self.config_data.get('exclude_…    483
+    self.host_context = dict(host_context or {})    273
+    self.ignore_case_var = tk.BooleanVar(value=True)    490
+    self.ignore_extension_var = tk.BooleanVar(value=True)    491
+    self.log_tab = ttk.Frame(self.notebook)    390
+    self.log_text = tk.Text(outer, wrap='word', state='disabled')    804
+    self.master = master    268
+    self.notebook = ttk.Notebook(self)    382
+    self.notes_tab = ttk.Frame(self.notebook)    442
+    self.preview_lines_var = tk.IntVar(value=int(self.config_data.get('preview…    495
+    self.preview_path_var = tk.StringVar(value='No file selected')    313
+    self.preview_position_var = tk.StringVar(value=self.config_data.get('preview_…    492
+    self.preview_text = tk.Text(preview_holder, wrap='none', state='disab…    615
+    self.recursive_var = tk.BooleanVar(value=bool(self.config_data.get('re…    480
+    self.refresh_notes = None    332, 431
+    self.review_info_var = tk.StringVar(value='Press Refresh to scan')    312
+    self.review_mask_var = tk.StringVar(value=self.config_data.get('review_m…    477
+    self.review_tab = ttk.Frame(self.notebook)    385
+    self.review_tree = build_treeview(review_frame, TV_REVIEW, owner=sel…    571
+    self.search_mode_var = tk.StringVar(value='Contains')    489
+    self.search_var = tk.StringVar(value='')    488
+    self.source_tree = build_treeview(source_frame, TV_FILES, owner=self…    560
+    self.status_var = tk.StringVar(value='No scan has been requested')    311
+    self.theme_var = self.ui_choices_controller.theme_var    824
+    self.top_lines_var = tk.IntVar(value=int(self.config_data.get('top_lin…    684
+    self.ui_choices_controller = None    331, 813, 830
+    self.ui_choices_tab = ttk.Frame(self.notebook)    391
+    self.ui_density = normalize_density_name(self.config_data.get('ui_d…    287, 1562
+    self.ui_theme_name = normalize_theme_name(self.config_data.get('ui_the…    284, 1561
+    self.user_gateway = None    330, 749
+    self.user_gateway_tab = ttk.Frame(self.notebook)    388
+    self.window = master.winfo_toplevel()    269
+    self.window_height_var = self.ui_choices_controller.window_height_var    827
+    self.window_width_var = self.ui_choices_controller.window_width_var    826
+    __init__()
+        host_density
+        host_theme
+    _apply_ui_choices()
+        density
+        height
+        theme
+        width
+    _apply_worker_result()
+        all_records
+        bottom_lines
+        count
+        directory
+        errors
+        groups
+        mask
+        records
+        scan_kind
+        source_records
+        top_lines
+    _attach_notes()
+        error
+        tab_id
+    _browse_directory()
+        current
+        selected
+    _browse_gateway()
+        current
+        selected
+    _build_about_tab()
+        details
+        outer
+        text
+    _build_checksum_tab()
+        options
+        outer
+        tree_frame
+    _build_config_tab()
+        label
+        outer
+        row
+        rows
+        variable
+    _build_edge_tab()
+        basis
+        options
+        outer
+        tree_frame
+    _build_log_tab()
+        outer
+        scrollbar
+    _build_review_tab()
+        outer
+        preview_controls
+        preview_frame
+        preview_holder
+        review_frame
+        search_line
+        source_frame
+        vertical
+        xbar
+        ybar
+    _build_ui_choices_tab()
+        outer
+    _checksum_worker()
+        block
+        digest
+        errors
+        handle
+        path
+        record
+        records
+    _current_tab()
+        selected
+    _directory_controls()
+        block
+        entry
+        first
+        second
+    _directory_is_excluded()
+        candidate
+        patterns
+        text
+    _duplicate_group_count()
+        counts
+    _edge_bytes()
+        bottom
+        handle
+        line
+        number
+        top
+    _edge_worker()
+        bottom
+        errors
+        path
+        record
+        records
+        top
+    _file_record()
+        extension
+        name
+        stat
+    _gateway_path()
+        value
+    _iter_paths()
+        directories
+        entries
+        entry
+        folder
+        name
+        names
+    _load_config()
+        data
+        handle
+        loaded
+    _log()
+        value
+    _mask_parts()
+        parts
+        text
+    _matches_mask()
+        lowered
+        pattern
+    _poll_worker()
+        result
+    _recycle_selected()
+        failures
+        path
+        path_map
+        paths
+        recycled
+        removed
+        tree
+    _refresh_review_results()
+        candidate
+        compare_query
+        matched
+        mode
+        query
+        record
+        results
+    _render_checksums()
+        counts
+        iid
+        number
+        record
+        records
+        values
+    _render_edges()
+        basis
+        counts
+        iid
+        key
+        number
+        record
+        records
+        values
+    _render_file_tree()
+        iid
+        number
+        record
+    _repeat_preview()
+        path
+    _review_selected()
+        selected
+    _review_worker()
+        all_records
+        errors
+        path
+        record
+        source_records
+    _save_config()
+        handle
+    _save_config_from_ui()
+        bottom_lines
+        path_type
+        preview_lines
+        top_lines
+    _scan_checksums()
+        values
+    _scan_edges()
+        bottom_lines
+        top_lines
+        values
+    _scan_review()
+        values
+    _select_saved_tab()
+        tab_id
+        wanted
+    _send_to_recycle_bin()
+        operation
+        result
+        class SHFILEOPSTRUCTW    1465-1475
+            _fields_ = [('hwnd', ctypes.c_void_p), ('wFunc', ctypes.c_ui…    1466
+    _show_preview()
+        _number
+        content
+        handle
+        line
+        line_count
+        lines
+        position
+    _source_selected()
+        name
+        path
+        selected
+    _start_worker()
+        cancel_event
+        generation
+    _validated_scan_values()
+        directory

@@ -1,0 +1,104 @@
+source_file = cpc_sweep.py
+source_modified = 2026-11-22 16:41:16
+import   origin   line;  indented: external name   xN calls   called by (def paths)
+
+from pathlib import Path    standard library    line 84    CAUTION: source file not named at the call
+        Path    x1    called by (module level)
+import sys    standard library    line 85
+        sys.path.insert    x1    called by (module level)
+import ctypes    standard library    line 99
+        ctypes.byref    x1    called by CCSweep._send_to_recycle_bin
+        ctypes.windll.shell32.SHFileOperationW    x1    called by CCSweep._send_to_recycle_bin
+import fnmatch    standard library    line 100
+        fnmatch.fnmatch    x2    called by CCSweep._directory_is_excluded, CCSweep._matches_mask
+import hashlib    standard library    line 101
+        hashlib.sha256    x4    called by CCSweep._checksum_worker, CCSweep._edge_worker
+import json    standard library    line 102
+        json.dump    x1    called by CCSweep._save_config
+        json.load    x1    called by CCSweep._load_config
+import os    standard library    line 103
+        os.getcwd    x1    called by script_dir
+        os.path.abspath    x7    called by CCSweep._browse_directory, CCSweep._file_record, CCSweep._gateway_path, CCSweep._recycle_selected, CCSweep._send_to_recycle_bin, CCSweep._validated_scan_values, script_dir
+        os.path.basename    x4    called by CCSweep._checksum_worker, CCSweep._edge_worker, CCSweep._file_record, CCSweep._source_selected
+        os.path.dirname    x2    called by CCSweep._browse_gateway, script_dir
+        os.path.expanduser    x3    called by CCSweep._browse_directory, CCSweep._gateway_path, CCSweep._validated_scan_values
+        os.path.expandvars    x3    called by CCSweep._browse_directory, CCSweep._gateway_path, CCSweep._validated_scan_values
+        os.path.isabs    x1    called by CCSweep._gateway_path
+        os.path.isdir    x2    called by CCSweep._browse_directory, CCSweep._validated_scan_values
+        os.path.isfile    x3    called by CCSweep._recycle_selected, CCSweep._repeat_preview, CCSweep._show_preview
+        os.path.join    x3    called by CCSweep.__init__, CCSweep._gateway_path, CCSweep._iter_paths
+        os.path.normcase    x6    called by CCSweep._recycle_selected
+        os.path.splitext    x5    called by CCSweep._excluded_from_code_review, CCSweep._file_record, CCSweep._refresh_review_results, CCSweep._source_selected
+        os.scandir    x1    called by CCSweep._iter_paths
+        os.stat    x1    called by CCSweep._file_record
+        os.walk    x1    called by CCSweep._iter_paths
+import queue    standard library    line 104
+        queue.Queue    x1    called by CCSweep.__init__
+import sys    standard library    line 105
+        sys.path.insert    x1    called by (module level)
+import threading    standard library    line 106
+        threading.Event    x1    called by CCSweep._start_worker
+        threading.Thread    x1    called by CCSweep._start_worker
+import tkinter as tk    standard library    line 107
+        tk.BooleanVar    x4    called by CCSweep._build_checksum_tab, CCSweep._build_review_tab
+        tk.IntVar    x3    called by CCSweep._build_edge_tab, CCSweep._build_review_tab
+        tk.StringVar    x15    called by CCSweep.__init__, CCSweep._build_checksum_tab, CCSweep._build_config_tab, CCSweep._build_edge_tab, CCSweep._build_review_tab
+        tk.Text    x3    called by CCSweep._build_about_tab, CCSweep._build_log_tab, CCSweep._build_review_tab
+        tk.Tk    x1    called by main
+from collections import Counter    standard library    line 108    CAUTION: source file not named at the call
+        Counter    x3    called by CCSweep._duplicate_group_count, CCSweep._render_checksums, CCSweep._render_edges
+from collections import deque    standard library    line 108    CAUTION: source file not named at the call
+        deque    x2    called by CCSweep._edge_bytes, CCSweep._show_preview
+from datetime import datetime    standard library    line 109    CAUTION: source file not named at the call
+        datetime.fromtimestamp    x1    called by CCSweep._format_time
+from tkinter import filedialog    standard library    line 110    CAUTION: source file not named at the call
+        filedialog.askdirectory    x1    called by CCSweep._browse_directory
+        filedialog.askopenfilename    x1    called by CCSweep._browse_gateway
+from tkinter import messagebox    standard library    line 110    CAUTION: source file not named at the call
+        messagebox.askyesno    x1    called by CCSweep._recycle_selected
+        messagebox.showerror    x3    called by CCSweep._save_config, CCSweep._scan_edges, CCSweep._validated_scan_values
+        messagebox.showinfo    x1    called by CCSweep._recycle_selected
+        messagebox.showwarning    x4    called by CCSweep._apply_ui_choices, CCSweep._load_config, CCSweep._recycle_selected, CCSweep._save_config_from_ui
+from tkinter import ttk    standard library    line 110    CAUTION: source file not named at the call
+        ttk.Button    x9    called by CCSweep._build_checksum_tab, CCSweep._build_config_tab, CCSweep._build_edge_tab, CCSweep._build_review_tab, CCSweep._directory_controls
+        ttk.Checkbutton    x5    called by CCSweep._build_checksum_tab, CCSweep._build_config_tab, CCSweep._build_review_tab, CCSweep._directory_controls
+        ttk.Combobox    x1    called by CCSweep._build_edge_tab
+        ttk.Entry    x5    called by CCSweep._build_config_tab, CCSweep._build_review_tab, CCSweep._directory_controls
+        ttk.Frame    x26    called by CCSweep._attach_notes, CCSweep._build_about_tab, CCSweep._build_checksum_tab, CCSweep._build_config_tab, CCSweep._build_edge_tab, CCSweep._build_log_tab, CCSweep._build_review_tab, CCSweep._build_ui, CCSweep._build_ui_choices_tab, CCSweep._directory_controls
+        ttk.Label    x23    called by CCSweep._attach_notes, CCSweep._build_about_tab, CCSweep._build_checksum_tab, CCSweep._build_config_tab, CCSweep._build_edge_tab, CCSweep._build_review_tab, CCSweep._build_ui, CCSweep._build_ui_choices_tab, CCSweep._build_user_gateway_tab, CCSweep._directory_controls
+        ttk.LabelFrame    x3    called by CCSweep._build_review_tab
+        ttk.Notebook    x1    called by CCSweep._build_ui
+        ttk.Panedwindow    x1    called by CCSweep._build_review_tab
+        ttk.Radiobutton    x4    called by CCSweep._build_review_tab
+        ttk.Scrollbar    x3    called by CCSweep._build_log_tab, CCSweep._build_review_tab
+        ttk.Spinbox    x3    called by CCSweep._build_edge_tab, CCSweep._build_review_tab
+from cpc_treeviews import TreeviewMixin    third party or your own file    line 121    CAUTION: source file not named at the call
+        (no calls through this import)
+from cpc_treeviews import build_treeview    third party or your own file    line 121    CAUTION: source file not named at the call
+        build_treeview    x4    called by CCSweep._build_checksum_tab, CCSweep._build_edge_tab, CCSweep._build_review_tab
+from cpc_treeviews import insert_row    third party or your own file    line 121    CAUTION: source file not named at the call
+        insert_row    x3    called by CCSweep._render_checksums, CCSweep._render_edges, CCSweep._render_file_tree
+from gateway_controller import GatewayController    third party or your own file    line 124    CAUTION: source file not named at the call
+        GatewayController    x1    called by CCSweep._build_user_gateway_tab
+import cpc_ui_choices as ui_choices    third party or your own file    line 129
+        ui_choices.attach    x1    called by CCSweep._build_ui_choices_tab
+import cpc_notes    third party or your own file    line 135
+        cpc_notes.attach    x1    called by CCSweep._attach_notes
+from cpc_ui_theme import apply_app_icon    third party or your own file    line 141    CAUTION: source file not named at the call
+        apply_app_icon    x1    called by CCSweep.__init__
+from cpc_ui_theme import apply_theme    third party or your own file    line 141    CAUTION: source file not named at the call
+        apply_theme    x2    called by CCSweep.__init__, CCSweep._apply_ui_choices
+from cpc_ui_theme import density_names    third party or your own file    line 141    CAUTION: source file not named at the call
+        (no calls through this import)
+from cpc_ui_theme import normalize_density_name    third party or your own file    line 141    CAUTION: source file not named at the call
+        normalize_density_name    x3    called by CCSweep.__init__, CCSweep._apply_ui_choices
+from cpc_ui_theme import normalize_theme_name    third party or your own file    line 141    CAUTION: source file not named at the call
+        normalize_theme_name    x3    called by CCSweep.__init__, CCSweep._apply_ui_choices
+from cpc_ui_theme import theme_names    third party or your own file    line 141    CAUTION: source file not named at the call
+        (no calls through this import)
+from send2trash import send2trash    third party or your own file    line 1456    CAUTION: source file not named at the call
+        send2trash    x1    called by CCSweep._send_to_recycle_bin
+
+Unknown source (not imported or defined in this file)
+    unknown, not imported or defined here
+        errors.append    x1    called by CCSweep._iter_paths.walk_error

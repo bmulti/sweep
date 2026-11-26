@@ -1,0 +1,74 @@
+source_file = cpc_sweep.py
+source_modified = 2026-11-22 16:41:16
+name(parameters) -> return  [decorators]    first line   (classes: first-last)
+
+apply_app_icon(*_args, **_kwargs)    150
+apply_theme(*_args, **_kwargs)    153
+attach(parent, context=None)    1623
+density_names()    156
+main()    1628
+normalize_density_name(value)    159
+normalize_theme_name(value)    162
+script_dir()    258
+theme_names()    165
+class CCSweep(TreeviewMixin, ttk.Frame)    265-1620
+    __init__(self, master, embedded=False, host_context=None)    266
+    _apply_ui_choices(self)    1548
+    _apply_worker_result(self, generation, kind, *payload)    1156
+    _attach_notes(self)    423
+    _browse_directory(self)    1488
+    _browse_gateway(self)    1501
+    _build_about_tab(self)    836
+    _build_checksum_tab(self)    630
+    _build_config_tab(self)    763
+    _build_edge_tab(self)    678
+    _build_log_tab(self)    801
+    _build_review_tab(self)    470
+    _build_ui(self)    381
+    _build_ui_choices_tab(self)    810
+    _build_user_gateway_tab(self)    740
+    _checksum_worker(self, generation, cancel_event, directory, mask, recursive, exclude_directories)    1039
+    _current_tab(self)    1574
+    _directory_controls(self, parent, mask_var, scan_command, scan_text, status_var)    446
+    _directory_is_excluded(name, exclude_mask)  [@staticmethod]    876
+    _duplicate_group_count(records, key)  [@staticmethod]    1328
+    _edge_bytes(path, top_count, bottom_count, cancel_event)  [@staticmethod]    1092
+    _edge_worker(self, generation, cancel_event, directory, mask, recursive, exclude_directories, top_lines, bottom_lines)    1105
+    _ensure_worker_poll(self)    985
+    _excluded_from_code_review(path_or_name)  [@staticmethod]    890
+    _file_record(cls, path)  [@classmethod]    894
+    _file_values(record)  [@staticmethod]    1214
+    _format_time(value)  [@staticmethod]    883
+    _gateway_path(self)    371
+    _iter_paths(directory, recursive, exclude_directories, cancel_event, errors)  [@staticmethod]    909
+        walk_error(exc)    911
+    _load_config(self)    339
+    _log(self, text)    1599
+    _mask_parts(mask)  [@staticmethod]    861
+    _matches_mask(cls, name, mask)  [@classmethod]    867
+    _on_close(self)    1618
+    _poll_worker(self)    991
+    _queue_scan_progress(self, generation, kind, count)    981
+    _recycle_selected(self, source)    1380
+    _refresh_review_results(self)    1245
+    _render_checksums(self)    1332
+    _render_edges(self)    1351
+    _render_file_tree(self, tree, records, path_map)    1217
+    _repeat_preview(self)    1276
+    _review_selected(self, _event=None)    1239
+    _review_worker(self, generation, cancel_event, directory, mask, recursive, exclude_directories)    1008
+    _save_config(self)    356
+    _save_config_from_ui(self)    1512
+    _scan_checksums(self)    1034
+    _scan_edges(self)    1071
+    _scan_review(self)    1003
+    _select_saved_tab(self)    1581
+    _send_to_recycle_bin(path)  [@staticmethod]    1454
+        class SHFILEOPSTRUCTW(ctypes.Structure)    1465-1475
+    _set_scan_message(self, kind, message)    972
+    _show_preview(self, path)    1281
+    _source_selected(self, _event=None)    1225
+    _start_worker(self, kind, target, args)    955
+    _tab_changed(self, _event=None)    1590
+    _validated_scan_values(self, mask_var)    937
+    shutdown(self)    1612
